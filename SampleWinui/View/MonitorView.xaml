@@ -1,0 +1,326 @@
+<UserControl
+    x:Class="SampleWinui.View.MonitorView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:common="using:SampleWinui.CommonControls"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:SampleWinui.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="using:SampleWinui.ViewModel"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <viewmodel:MonitorViewModel x:Key="MonitorViewModel" />
+    </UserControl.Resources>
+
+    <Grid DataContext="{StaticResource MonitorViewModel}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Background="#FFFFFF">
+            <Grid Margin="20,10,20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+
+                <CheckBox
+                    Grid.Row="0"
+                    Margin="0,10,0,0"
+                    Padding="70,0,0,0"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    FlowDirection="RightToLeft"
+                    FontWeight="SemiBold"
+                    IsChecked="True">
+                    <CheckBox.Content>
+                        <TextBlock
+                            Style="{StaticResource SubHeaderFontStyle}"
+                            Text="Include Succeeded Items:"
+                            TextTrimming="CharacterEllipsis" />
+                    </CheckBox.Content>
+                </CheckBox>
+
+                <CheckBox
+                    Grid.Row="1"
+                    Margin="0,10,0,0"
+                    Padding="86,0,0,0"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    FlowDirection="RightToLeft"
+                    FontWeight="SemiBold"
+                    IsChecked="True">
+                    <CheckBox.Content>
+                        <TextBlock
+                            Style="{StaticResource SubHeaderFontStyle}"
+                            Text="Include Running Items:"
+                            TextTrimming="CharacterEllipsis" />
+                    </CheckBox.Content>
+                </CheckBox>
+
+                <CheckBox
+                    Grid.Row="2"
+                    Margin="0,10,0,0"
+                    Padding="105,0,0,0"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    FlowDirection="RightToLeft"
+                    FontWeight="SemiBold">
+                    <CheckBox.Content>
+                        <TextBlock
+                            Style="{StaticResource SubHeaderFontStyle}"
+                            Text="Include Future Jobs:"
+                            TextTrimming="CharacterEllipsis" />
+                    </CheckBox.Content>
+                </CheckBox>
+
+
+                <TextBlock
+                    Grid.Row="3"
+                    Margin="0,15,0,0"
+                    Padding="0,10,0,0"
+                    FontSize="20"
+                    FontWeight="bold"
+                    Foreground="{StaticResource MonitorViewTextForeground}"
+                    Text="Dates" />
+
+                <Grid Grid.Row="4" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="90*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox
+                        Grid.Column="1"
+                        Width="260"
+                        Height="800"
+                        Margin="0,20,5,0"
+                        HorizontalAlignment="Left"
+                        FontFamily="{ThemeResource Source_Sans_Pro_SemiBold}"
+                        Text="None" />
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Margin="30,30,30,10" CornerRadius="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="7*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Height="60" Background="White">
+                    <TextBlock
+                        Margin="15,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource HeaderFontStyle}"
+                        Text="List of Jobs" />
+                </Grid>
+
+                <Grid Grid.Row="1" Background="White">
+                    <common:CustomDataGrid
+                        x:Name="gridView"
+                        Grid.Row="1"
+                        Margin="0,0,20,0"
+                        AutoGenerateColumns="False"
+                        Background="White"
+                        BorderBrush="{ThemeResource PivotItemBackGround}"
+                        BorderThickness="1"
+                        Foreground="Black"
+                        GridLinesVisibility="All"
+                        HorizontalGridLinesBrush="{ThemeResource PivotItemBackGround}"
+                        ItemsSource="{Binding ElementName=PagingControl, Path=FilteredSource}"
+                        VerticalGridLinesBrush="{ThemeResource PivotItemBackGround}">
+                        <controls:DataGrid.CellStyle>
+                            <Style TargetType="controls:DataGridCell">
+                                <Setter Property="Height" Value="50" />
+                            </Style>
+                        </controls:DataGrid.CellStyle>
+
+                        <controls:DataGrid.Columns>
+                            <controls:DataGridTextColumn
+                                Width="2*"
+                                Binding="{Binding RunningProcessId}"
+                                Header="Running Process ID" />
+                            <controls:DataGridTextColumn
+                                Width="2*"
+                                Binding="{Binding RunningActivity}"
+                                Header="Running Activity" />
+                            <controls:DataGridTextColumn
+                                Width="*"
+                                Binding="{Binding Started}"
+                                Header="Started" />
+                            <controls:DataGridTextColumn
+                                Width="*"
+                                Binding="{Binding Ended}"
+                                Header="Ended" />
+                            <controls:DataGridTextColumn
+                                Width="*"
+                                Binding="{Binding Type}"
+                                Header="Type" />
+                            <controls:DataGridTextColumn
+                                Width="*"
+                                Binding="{Binding Id}"
+                                Header="ID" />
+                            <controls:DataGridTextColumn
+                                Width="2*"
+                                Binding="{Binding Description}"
+                                Header="Description" />
+                            <controls:DataGridTextColumn
+                                Width="*"
+                                Binding="{Binding FailedTask}"
+                                Header="Failed Task" />
+                            <controls:DataGridTextColumn
+                                Width="3*"
+                                Binding="{Binding Status}"
+                                Foreground="{StaticResource TitleBarBackground}"
+                                Header="Status" />
+                        </controls:DataGrid.Columns>
+                    </common:CustomDataGrid>
+                </Grid>
+
+                <common:PaginationControl
+                    x:Name="PagingControl"
+                    Grid.Row="2"
+                    Source="{Binding monitors}" />
+
+                <Grid Grid.Row="3" Margin="0,10,0,0">
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <Button
+                            Width="150"
+                            Height="30"
+                            Margin="0,0,20,0"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            Background="{StaticResource MonitorButtonBackground}"
+                            Content="Reset Activity Counters"
+                            FontSize="10"
+                            Foreground="#FFFFFF"
+                            Style="{StaticResource ButtonStyle}" />
+                        <Button
+                            Grid.Column="1"
+                            Width="150"
+                            Height="30"
+                            Margin="0,0,20,0"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            Background="{StaticResource MonitorViewJoblogButtonBackground}"
+                            Content="Show Job Log"
+                            FontSize="10"
+                            Foreground="#FFFFFF"
+                            Style="{StaticResource ButtonStyle}" />
+                        <Button
+                            Grid.Column="2"
+                            Width="150"
+                            Height="30"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            Background="{StaticResource MonitorButtonBackground}"
+                            Content="Refresh"
+                            FontSize="10"
+                            Foreground="#FFFFFF"
+                            Style="{StaticResource ButtonStyle}" />
+                    </StackPanel>
+
+
+                </Grid>
+            </Grid>
+
+            <Grid
+                Grid.Row="1"
+                Margin="30,15,30,0"
+                CornerRadius="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Height="60" Background="White">
+                    <TextBlock
+                        Margin="15,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource HeaderFontStyle}"
+                        Text="Task" />
+                </Grid>
+
+                <Grid Grid.Row="1" Background="White">
+
+                    <common:CustomDataGrid
+                        Grid.Row="1"
+                        Margin="0,0,20,0"
+                        AutoGenerateColumns="False"
+                        Background="White"
+                        BorderBrush="{ThemeResource PivotItemBackGround}"
+                        BorderThickness="1"
+                        Foreground="Black"
+                        GridLinesVisibility="All"
+                        HorizontalGridLinesBrush="{ThemeResource PivotItemBackGround}"
+                        ItemsSource="{Binding ElementName=PagingControl1, Path=FilteredSource}"
+                        VerticalGridLinesBrush="{ThemeResource PivotItemBackGround}">
+                        <controls:DataGrid.CellStyle>
+                            <Style TargetType="controls:DataGridCell">
+                                <Setter Property="Height" Value="50" />
+                            </Style>
+                        </controls:DataGrid.CellStyle>
+
+                        <controls:DataGrid.Columns>
+                            <controls:DataGridTextColumn
+                                Width="*"
+                                Binding="{Binding Groups}"
+                                Header="Groups" />
+                            <controls:DataGridTextColumn
+                                Width="*"
+                                Binding="{Binding Started}"
+                                Header="Started" />
+                            <controls:DataGridTextColumn
+                                Width="*"
+                                Binding="{Binding Enabled}"
+                                Header="Enabled" />
+                            <controls:DataGridTextColumn
+                                Width="*"
+                                Binding="{Binding TaskId}"
+                                Header="TaskId" />
+                            <controls:DataGridTextColumn
+                                Width="2*"
+                                Binding="{Binding TaskDescription}"
+                                Header="TaskDescription" />
+                            <controls:DataGridTextColumn
+                                Width="3*"
+                                Binding="{Binding Status}"
+                                Header="Status" />
+                            <controls:DataGridTextColumn
+                                Width="*"
+                                Binding="{Binding TaskModule}"
+                                Header="TaskModule" />
+                        </controls:DataGrid.Columns>
+                    </common:CustomDataGrid>
+                </Grid>
+
+                <!--  Pagination Control for NG data  -->
+
+                <common:PaginationControl
+                    x:Name="PagingControl1"
+                    Grid.Row="2"
+                    Source="{Binding monitorsub}" />
+
+            </Grid>
+        </Grid>
+
+    </Grid>
+</UserControl>

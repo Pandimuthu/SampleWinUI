@@ -1,0 +1,97 @@
+<UserControl
+    x:Class="SampleWinui.View.ScheduleView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:common="using:SampleWinui.CommonControls"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:SampleWinui.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="using:SampleWinui.ViewModel"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <viewmodel:ScheduleViewModel x:Key="ScheduleViewModel" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Margin="30"
+            HorizontalAlignment="Left"
+            FontSize="35"
+            Style="{StaticResource ExtraBlackFontStyle}"
+            Text="Schedule" />
+
+        <Grid
+            Grid.Row="1"
+            Margin="30,0,30,30"
+            CornerRadius="5"
+            DataContext="{StaticResource ScheduleViewModel}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="11*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid Background="White">
+                <TextBlock
+                    Margin="15,0,0,0"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    Style="{StaticResource HeaderFontStyle}"
+                    Text="Jobs" />
+            </Grid>
+
+
+            <Grid Grid.Row="1" Background="White">
+
+                <common:CustomDataGrid
+                    x:Name="gridView"
+                    Grid.Row="1" 
+                    Margin="0,0,20,0"
+                    AutoGenerateColumns="False"
+                    Background="White"
+                    BorderBrush="{ThemeResource PivotItemBackGround}"
+                    BorderThickness="1"
+                    Foreground="Black"
+                    GridLinesVisibility="All"
+                    HorizontalGridLinesBrush="{ThemeResource PivotItemBackGround}"
+                    ItemsSource="{Binding ElementName=PagingControl, Path=FilteredSource}"
+                    VerticalGridLinesBrush="{ThemeResource PivotItemBackGround}">
+                    <controls:DataGrid.CellStyle>
+                        <Style TargetType="controls:DataGridCell">
+                            <Setter Property="Height" Value="50" />
+                        </Style>
+                    </controls:DataGrid.CellStyle>
+
+                    <controls:DataGrid.Columns>
+                        <controls:DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding StartDate}"
+                            Header="Start Date" />
+                        <controls:DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding StartTime}"
+                            Header="Start Time" />
+                        <controls:DataGridTextColumn
+                            Width="4*"
+                            Binding="{Binding JobName}"
+                            Header="Job Name" />
+
+                    </controls:DataGrid.Columns>
+                </common:CustomDataGrid>
+            </Grid>
+
+            <common:PaginationControl
+                x:Name="PagingControl"
+                Grid.Row="2"
+                Source="{Binding Schedules}" />
+
+        </Grid>
+
+    </Grid>
+</UserControl>

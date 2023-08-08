@@ -1,0 +1,381 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>SampleWinui</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x86;x64;arm64</Platforms>
+    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
+    <UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="ButtonStyle.xaml" />
+    <None Remove="ChildWindowControls\ChildWindow.xaml" />
+    <None Remove="Fonts\SourceSansPro-Black.ttf" />
+    <None Remove="Fonts\SourceSansPro-Bold.ttf" />
+    <None Remove="Fonts\SourceSansPro-Regular.ttf" />
+    <None Remove="Fonts\SourceSansPro-SemiBold.ttf" />
+    <None Remove="Image\Group 1560.svg" />
+    <None Remove="Image\Icon_About.svg" />
+    <None Remove="Image\Icon_Account.svg" />
+    <None Remove="Image\Icon_AddNewJob.svg" />
+    <None Remove="Image\Icon_AP.svg" />
+    <None Remove="Image\Icon_Backup.svg" />
+    <None Remove="Image\Icon_Close.svg" />
+    <None Remove="Image\Icon_E-mail.svg" />
+    <None Remove="Image\Icon_Failed_S.svg" />
+    <None Remove="Image\Icon_Filter_mobile.svg" />
+    <None Remove="Image\Icon_Hamburguer.svg" />
+    <None Remove="Image\Icon_Iddle_S.svg" />
+    <None Remove="Image\Icon_Instances.svg" />
+    <None Remove="Image\Icon_Minimize.svg" />
+    <None Remove="Image\Icon_PMMS.svg" />
+    <None Remove="Image\Icon_RestoreDown.svg" />
+    <None Remove="Image\Icon_service.svg" />
+    <None Remove="Image\Icon_Show Schedule.svg" />
+    <None Remove="Image\Icon_Succeeded_S.svg" />
+    <None Remove="Image\Path 1854.svg" />
+    <None Remove="Image\windowsCopy.jpg" />
+    <None Remove="Image\__MACOSX\._Group 1560.svg" />
+    <None Remove="Image\__MACOSX\._Icon_About.svg" />
+    <None Remove="Image\__MACOSX\._Icon_Account.svg" />
+    <None Remove="Image\__MACOSX\._Icon_AddNewJob.svg" />
+    <None Remove="Image\__MACOSX\._Icon_AP.svg" />
+    <None Remove="Image\__MACOSX\._Icon_Backup.svg" />
+    <None Remove="Image\__MACOSX\._Icon_Close.svg" />
+    <None Remove="Image\__MACOSX\._Icon_E-mail.svg" />
+    <None Remove="Image\__MACOSX\._Icon_Failed_S.svg" />
+    <None Remove="Image\__MACOSX\._Icon_Filter_mobile.svg" />
+    <None Remove="Image\__MACOSX\._Icon_Hamburguer.svg" />
+    <None Remove="Image\__MACOSX\._Icon_Iddle_S.svg" />
+    <None Remove="Image\__MACOSX\._Icon_Instances.svg" />
+    <None Remove="Image\__MACOSX\._Icon_Minimize.svg" />
+    <None Remove="Image\__MACOSX\._Icon_PMMS.svg" />
+    <None Remove="Image\__MACOSX\._Icon_RestoreDown.svg" />
+    <None Remove="Image\__MACOSX\._Icon_service.svg" />
+    <None Remove="Image\__MACOSX\._Icon_Show Schedule.svg" />
+    <None Remove="Image\__MACOSX\._Icon_Succeeded_S.svg" />
+    <None Remove="Image\__MACOSX\._Path 1854.svg" />
+    <None Remove="Image\__MACOSX\Icon_Refresh.svg" />
+    <None Remove="Theme\DataGridStyle.xaml" />
+    <None Remove="View\ChildScheduleView.xaml" />
+    <None Remove="View\IssuesView.xaml" />
+    <None Remove="View\ApplicationInstances.xaml" />
+    <None Remove="View\EmailSetup.xaml" />
+    <None Remove="View\ApplicationWindowServicePanel.xaml" />
+    <None Remove="View\FileView.xaml" />
+    <None Remove="View\IssuesSubVIew.xaml" />
+    <None Remove="View\IssuesView.xaml" />
+    <None Remove="View\JobSetup.xaml" />
+    <None Remove="View\JobsView.xaml" />
+    <None Remove="View\ListJobsView.xaml" />
+    <None Remove="View\LogView.xaml" />
+    <None Remove="View\Module_Validation.xaml" />
+    <None Remove="View\MonitorView.xaml" />
+    <None Remove="View\Objects.xaml" />
+    <None Remove="View\ScheduleListItems.xaml" />
+    <None Remove="View\ScheduleView.xaml" />
+    <None Remove="View\Setup.xaml" />
+    <None Remove="View\SystemUtilities.xaml" />
+    <None Remove="View\PMMSSetup.xaml" />
+    <None Remove="View\TaskList.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fonts\SourceSansPro-Black.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\SourceSansPro-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\SourceSansPro-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\SourceSansPro-SemiBold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Group 1560.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_About.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_Account.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_AddNewJob.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_AP.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_Backup.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_Close.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Image\Group 1560.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_About.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_Account.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_AddNewJob.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_AP.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_Backup.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_Close.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_E-mail.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_Failed_S.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_Filter_mobile.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_Hamburguer.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_Iddle_S.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_Instances.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_Minimize.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_PMMS.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_RestoreDown.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_service.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_Show Schedule.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_Succeeded_S.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Path 1854.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\windowsCopy.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_E-mail.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_Failed_S.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_Filter_mobile.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_Hamburguer.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_Iddle_S.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_Instances.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_Minimize.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_PMMS.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_RestoreDown.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_service.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_Show Schedule.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Icon_Succeeded_S.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\__MACOSX\._Path 1854.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Icon_Refresh.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
+	  <PackageReference Include="CommunityToolkit.WinUI.UI.Controls.DataGrid" Version="7.1.2" />
+
+	  <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.3" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.194" />
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <!-- 
+    Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
+    Tools extension to be activated for this project even if the Windows App SDK Nuget
+    package has not yet been restored.
+  -->
+  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\JobSetup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\ChildScheduleView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Theme\DataGridStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\ScheduleView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\ScheduleListItems.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Module_Validation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\MonitorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\IssuesSubVIew.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\IssuesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\IssuesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\ApplicationWindowServicePanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\SystemUtilities.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Setup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\FileView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\JobsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\EmailSetup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\PMMSSetup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\ApplicationInstances.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Theme\ButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\LogView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\TaskList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\ListJobsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ChildWindowControls\ChildWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <!-- 
+    Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution 
+    Explorer "Package and Publish" context menu entry to be enabled for this project even if 
+    the Windows App SDK Nuget package has not yet been restored.
+  -->
+  <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
+  </PropertyGroup>
+</Project>

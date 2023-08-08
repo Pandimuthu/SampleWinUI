@@ -1,0 +1,134 @@
+﻿<Window
+    x:Class="SampleWinui.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:SampleWinui"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="using:SampleWinui.View"
+    mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="AppTitleBar" Background="{StaticResource TitleBarBackground}" />
+        <Grid Grid.Row="1" HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid
+                x:Name="HeaderGrid"
+                Grid.Column="1"
+                SizeChanged="Grid_SizeChanged">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Pivot
+                    x:Name="pivot"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3"
+                    SelectionChanged="pivot_SelectionChanged">
+                    <Pivot.HeaderTemplate>
+                        <DataTemplate>
+                            <Border
+                                Height="50"
+                                Margin="10,0,30,0"
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="25"
+                                    Style="{StaticResource SubHeaderFontStyle}"
+                                    Text="{Binding}"
+                                    TextAlignment="Center" />
+                            </Border>
+                        </DataTemplate>
+                    </Pivot.HeaderTemplate>
+                    <Pivot.LeftHeaderTemplate>
+                        <DataTemplate>
+                            <Image
+                                Width="200"
+                                Height="50"
+                                Margin="50,5,80,5"
+                                HorizontalAlignment="Center"
+                                Source="ms-appx:///Image/windowsCopy.jpg" />
+
+                        </DataTemplate>
+                    </Pivot.LeftHeaderTemplate>
+                    <PivotItem Background="#D9E4E8" Header="File">
+                        <Grid Margin="-12,0,0,0" Style="{StaticResource TabViewShadowLine}">
+                            <view:FileView />
+                        </Grid>
+                    </PivotItem>
+                    <PivotItem Background="#D9E4E8" Header="Jobs">
+                        <Grid Margin="-12,0,0,0" Style="{StaticResource TabViewShadowLine}">
+                            <view:JobsView x:Name="jobsView" />
+                        </Grid>
+                    </PivotItem>
+                    <PivotItem Background="#D9E4E8" Header="Issues">
+                        <Grid Margin="-12,0,0,0" Style="{StaticResource TabViewShadowLine}">
+                            <view:IssuesView />
+                        </Grid>
+                    </PivotItem>
+                    <PivotItem Background="#D9E4E8" Header="Monitor">
+                        <Grid Margin="-12,0,0,0" Style="{StaticResource TabViewShadowLine}">
+                            <view:MonitorView />
+                        </Grid>
+                    </PivotItem>
+                    <PivotItem Background="#D9E4E8" Header="Schedule">
+                        <view:ScheduleView />
+                    </PivotItem>
+                </Pivot>
+                <StackPanel
+                    x:Name="rightPanel"
+                    Margin="10"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Margin="5"
+                        Style="{StaticResource SubHeaderFontStyle}"
+                        Text="Instance :" />
+                    <ComboBox
+                        Width="150"
+                        BorderBrush="#bdbdbd"
+                        CornerRadius="15"
+                        SelectedIndex="0">
+                        <ComboBoxItem>Primary</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox
+                        Width="135"
+                        BorderThickness="0"
+                        FontFamily="{ThemeResource Source_Sans_Pro_Bold}"
+                        SelectedIndex="0">
+                        <ComboBoxItem>AccountName</ComboBoxItem>
+                    </ComboBox>
+                    <Grid Margin="0,0,20,0" VerticalAlignment="Top">
+                        <Grid
+                            Name="backgroundGrid"
+                            Width="30"
+                            Height="30"
+                            Visibility="Visible">
+                            <Ellipse
+                                Name="Fill"
+                                Fill="#D9E4E8"
+                                Visibility="Visible" />
+                        </Grid>
+                        <Path
+                            Width="20"
+                            Height="20"
+                            Margin="0,0,0,0"
+                            Data="M21.576999,13.473151C26.414003,15.496185 30.259996,20.071221 31.999999,25.86432 15.448002,32.143386 0,25.86432 0,25.86432 1.7140042,20.158227 5.4690005,15.632174 10.202001,13.564156 11.338002,15.514191 13.444005,16.827195 15.862003,16.827195 18.317996,16.827195 20.455997,15.474182 21.576999,13.473151z M16.000003,0C19.617999,1.5323894E-07 22.550998,2.9330488 22.550998,6.5510722 22.550998,10.170134 19.617999,13.102144 16.000003,13.102144 12.381993,13.102144 9.4489957,10.170134 9.4489957,6.5510722 9.4489957,2.9330488 12.381993,1.5323894E-07 16.000003,0z"
+                            Fill="#FFFFFFFF"
+                            RenderTransformOrigin="0.5,0.5"
+                            Stretch="Uniform" />
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

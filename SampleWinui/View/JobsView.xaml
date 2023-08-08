@@ -1,0 +1,221 @@
+<!--  Copyright (c) Microsoft Corporation and Contributors.  -->
+<!--  Licensed under the MIT License.  -->
+
+<UserControl
+    x:Class="SampleWinui.View.JobsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:SampleWinui.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="using:SampleWinui.ViewModel"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <viewmodel:JobsViewModel x:Key="JobsViewModel" />
+    </UserControl.Resources>
+
+    <Grid
+        x:Name="rootGrid"
+        DataContext="{StaticResource JobsViewModel}"
+        SizeChanged="Grid_SizeChanged">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Background="#FFFFFF">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Padding="15,10,0,0"
+                FontSize="20"
+                FontWeight="bold"
+                Foreground="{StaticResource JobsViewTextForeground}"
+                Text="Filter" />
+            <NavigationView
+                x:Name="nvSample8"
+                Grid.Row="1"
+                IsBackButtonVisible="Collapsed"
+                IsPaneToggleButtonVisible="False"
+                IsSettingsVisible="False"
+                IsTabStop="False"
+                PaneDisplayMode="Left"
+                SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                <NavigationView.MenuItems>
+                    <NavigationViewItem
+                        Content="STANDARD GROUPS"
+                        FontSize="16"
+                        Icon="Contact"
+                        IsExpanded="True"
+                        Tag="SamplePage2"
+                        ToolTipService.ToolTip="STANDARD GROUPS">
+                        <NavigationViewItem.MenuItems>
+                            <NavigationViewItem Tag="All Jobs" ToolTipService.ToolTip="All Jobs">
+                                <NavigationViewItem.Content>
+                                    <TextBlock>
+                                        <Run Text="All Jobs" />
+                                        <Run Text=" (" />
+                                        <Run Text="{Binding AllJobsCount}" />
+                                        <Run Text=")" />
+                                    </TextBlock>
+                                </NavigationViewItem.Content>
+                            </NavigationViewItem>
+                            <NavigationViewItem Tag="Running Jobs" ToolTipService.ToolTip="Running jobs">
+                                <NavigationViewItem.Content>
+                                    <TextBlock>
+                                        <Run Text="Running Jobs" />
+                                        <Run Text=" (" />
+                                        <Run Text="{Binding RunningJobsCount}" />
+                                        <Run Text=")" />
+                                    </TextBlock>
+                                </NavigationViewItem.Content>
+                            </NavigationViewItem>
+                            <NavigationViewItem Tag="Failed Jobs" ToolTipService.ToolTip="Failed jobs">
+                                <NavigationViewItem.Content>
+                                    <TextBlock>
+                                        <Run Text="Failed Jobs" />
+                                        <Run Text=" (" />
+                                        <Run Text="{Binding FailedJobsCount}" />
+                                        <Run Text=")" />
+                                    </TextBlock>
+                                </NavigationViewItem.Content>
+                            </NavigationViewItem>
+                        </NavigationViewItem.MenuItems>
+                    </NavigationViewItem>
+                    <NavigationViewItem
+                        Content="SHARED GROUPS"
+                        FontSize="16"
+                        Icon="ReShare"
+                        IsExpanded="True"
+                        SelectsOnInvoked="False"
+                        ToolTipService.ToolTip="SHARED GROUPS">
+                        <NavigationViewItem.MenuItems>
+                            <NavigationViewItem
+                                Content="ImaginePay"
+                                FontFamily="{ThemeResource Source_Sans_Pro_Regular}"
+                                Tag="SamplePage5"
+                                ToolTipService.ToolTip="ImaginePay" />
+                            <NavigationViewItem
+                                Content="Statement Extracts"
+                                FontFamily="{ThemeResource Source_Sans_Pro_Regular}"
+                                Tag="SamplePage6"
+                                ToolTipService.ToolTip="Statement Extracts" />
+                            <NavigationViewItem
+                                Content="QA Jobs"
+                                FontFamily="{ThemeResource Source_Sans_Pro_Regular}"
+                                Tag="SamplePage6"
+                                ToolTipService.ToolTip="QA Jobs" />
+                        </NavigationViewItem.MenuItems>
+                    </NavigationViewItem>
+                    <NavigationViewItem
+                        Content="MY FAVORITES"
+                        FontSize="16"
+                        FontWeight="bold"
+                        Icon="OutlineStar"
+                        IsExpanded="True" />
+                </NavigationView.MenuItems>
+            </NavigationView>
+            <Grid
+                Grid.Row="2"
+                Margin="15,0,15,15"
+                VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Padding="0,10,0,0"
+                    FontSize="20"
+                    FontWeight="bold"
+                    Foreground="{StaticResource JobsViewTextForeground}"
+                    Text="View" />
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Style="{StaticResource SubHeaderFontStyle}"
+                        Text="Include sub-groups"
+                        TextTrimming="CharacterEllipsis" />
+                    <CheckBox
+                        Grid.Column="1"
+                        Margin="0,0,-100,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource SubHeaderFontStyle}"
+                        Text="Include duplicates"
+                        TextTrimming="CharacterEllipsis" />
+                    <CheckBox
+                        Grid.Column="1"
+                        Margin="0,0,-100,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource SubHeaderFontStyle}"
+                        Text="Select running task on refresh"
+                        TextTrimming="CharacterEllipsis" />
+                    <CheckBox
+                        Grid.Column="1"
+                        Margin="0,0,-100,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid x:Name="MainGrid" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.2*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <local:ListJobsView />
+            <ScrollViewer Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <local:TaskList
+                        x:Name="TaskList"
+                        Grid.Row="0"
+                        Grid.Column="0" />
+                    <local:LogView
+                        x:Name="logView"
+                        Grid.Row="0"
+                        Grid.Column="0" />
+                </Grid>
+            </ScrollViewer>
+
+        </Grid>
+    </Grid>
+</UserControl>
